@@ -5,6 +5,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
 import { RouterModule } from '@angular/router';
+import { AuthRoutingModule } from './auth-routing.module';
 
 
 
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule, 
-    RouterModule
+    RouterModule, 
+    AuthRoutingModule
   ]
 })
 export class AuthModule { }
