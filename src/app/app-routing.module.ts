@@ -4,7 +4,7 @@ import { HomeComponent } from './public/components/home/home.component';
 
 const routes: Routes = [
 
-  {path:'home', component: HomeComponent}
+  {path:'#/home', component: HomeComponent}
 
 ];
 
