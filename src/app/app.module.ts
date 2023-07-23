@@ -11,6 +11,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions())
+    provideFunctions(() => getFunctions()),
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
