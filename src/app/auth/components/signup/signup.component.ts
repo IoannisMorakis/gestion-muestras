@@ -20,7 +20,7 @@ export class SignupComponent {
      .catch((err) =>{
       alert(err.message);
      })
-     
+
   }
 
 }
