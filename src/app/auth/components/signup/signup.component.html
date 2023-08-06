@@ -2,15 +2,14 @@
 
 <form #loginForm="ngForm" (ngSubmit)="handleRegister(loginForm.value)">
     <div class="main">
-      <div class="input-fields">  
+      <div class="input-fields">
           <input name="email" ngModel placeholder="Email" id="email" type="email" class="input-field" />
       </div>
       <div class="input-fields">
           <input name="password" ngModel placeholder="Password" id="password" type="password" class="input-field" />
       </div>
-  
-  
+
+
       <button>Sign Up</button>
     </div>
 </form>
-  
