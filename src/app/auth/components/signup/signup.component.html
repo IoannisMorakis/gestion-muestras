@@ -5,9 +5,26 @@
       <div class="input-fields">
           <input name="email" ngModel placeholder="Email" id="email" type="email" class="input-field" />
       </div>
+
+      <div class="input-fields">
+        <input list="roles" name="role" ngModel placeholder="Role" id="role" type="role" class="input-field">
+        <datalist id="roles">
+          <option value="Investigador">
+          <option value="Cliente">
+          <option value="Administrador">
+        </datalist>
+    </div>
+
       <div class="input-fields">
           <input name="password" ngModel placeholder="Password" id="password" type="password" class="input-field" />
       </div>
+      <div class="input-fields">
+        <input name="confirmpassword" ngModel placeholder="Confirm Password" id="confirmpassword" type="password" class="input-field" />
+      </div>
+
+
+
+
 
 
       <button>Sign Up</button>

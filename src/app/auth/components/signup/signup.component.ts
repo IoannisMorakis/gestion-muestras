@@ -38,13 +38,21 @@ export class SignupComponent {
   addData(value: any) {
     //const dbInstance = collection(this.firestore, 'users');
     const dbInstance = doc(this.firestore, 'users', value.email);
-    setDoc(dbInstance, value)
-      .then(() => {
-        alert('Data Sent')
+    if(value.password == value.confirmpassword){
+      setDoc(dbInstance, {
+        'email': value.email,
+        'role': value.role,
+        'password': value.password
       })
-      .catch((err) => {
-        alert(err.message)
-      })
+        .then(() => {
+          alert('Data Sent')
+        })
+        .catch((err) => {
+          alert(err.message)
+        })
+     }else {
+      alert('No Iguales')
+    }
   }
 
 }
