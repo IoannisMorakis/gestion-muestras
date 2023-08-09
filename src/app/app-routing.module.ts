@@ -6,7 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 const routes: Routes = [
 
   {path:'home', component: HomeComponent},
-  {path:'admin', component: AdminComponent}
+  {path:'admin/:id', component: AdminComponent}
 
 ];
 

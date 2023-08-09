@@ -1,2 +1,18 @@
 <p>admin works!</p>
 
+<ul>
+  <li *ngFor="let item of data" >
+    <p contenteditable="true">
+    {{ item.email }}
+    {{ item.name }}
+    {{ item.password }}
+    </p>
+    <button (click)="updateData(item.id)">
+      Update
+    </button>
+
+    <button (click)="deleteData(item.id)">
+      Delete
+    </button>
+  </li>
+</ul>

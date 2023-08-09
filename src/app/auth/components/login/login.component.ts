@@ -7,6 +7,7 @@ import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  public current: any
   constructor(public auth: Auth){
 
   }
@@ -22,6 +23,7 @@ export class LoginComponent {
     })
 
     console.log(this.auth.currentUser)
+    window.location.href= "#/admin/1";
 
 
   }
@@ -41,5 +43,13 @@ export class LoginComponent {
   mFirebaseUser.getEmail();
   // User-Profile (if available)
   mFirebaseUser.getPhotoUrl();
+
+
+
+  this.current= this.auth.currentUser
+  let str: string
+  str= '#/admin/' + this.current
+  window.location.href=str;
+
 
 */

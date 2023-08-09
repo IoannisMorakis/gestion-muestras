@@ -22,7 +22,7 @@ export class AppComponent {
      .catch((err) =>{
       alert(err.message);
      })
-     
+
   }
 
   handleLogin(value:any){
@@ -36,7 +36,7 @@ export class AppComponent {
 
 
   }
-  
+
 
 
 }

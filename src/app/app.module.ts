@@ -13,6 +13,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { UserModule } from './user/user.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AdminModule } from './admin/admin.module';
 
 
 
@@ -31,6 +32,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     UserModule,
+    AdminModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy}
