@@ -21,6 +21,7 @@ export class SignupComponent {
   public data: any = []
 
   constructor(public auth: Auth, public firestore: Firestore){
+    this.getData();
 
   }
 
@@ -53,6 +54,16 @@ export class SignupComponent {
      }else {
       alert('No Iguales')
     }
+  }
+
+  getData() {
+    const dbInstance = collection(this.firestore, 'users');
+    getDocs(dbInstance)
+      .then((response) => {
+        this.data = [...response.docs.map((item) => {
+          return { ...item.data(), id: item.id }
+        })]
+      })
   }
 
 }
