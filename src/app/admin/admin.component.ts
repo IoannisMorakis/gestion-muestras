@@ -1,18 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { Firestore, collection, deleteDoc, doc, getDocs, updateDoc } from '@angular/fire/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
   public data: any = []
-  constructor(public firestore: Firestore) {
+  constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
     this.getData()
   }
 
+  ngOnInit(): void {
+    //console.log(history.state.user);
+    //console.log(this.router);
+    //console.log(this.route);
+    /*this.route.params.subscribe(param =>{
+      console.log(param);
+    })*/
+
+
+  }
+
   getData() {
+    //console.log(this.auth.currentUser)
     const dbInstance = collection(this.firestore, 'users');
     getDocs(dbInstance)
       .then((response) => {

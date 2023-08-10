@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,8 @@ import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '
 })
 export class LoginComponent {
   public current: any
-  constructor(public auth: Auth){
+  public nid: number = 1;
+  constructor(public auth: Auth, private router: Router){
 
   }
 
@@ -22,8 +24,18 @@ export class LoginComponent {
      alert(err.message);
     })
 
-    console.log(this.auth.currentUser)
-    window.location.href= "#/admin/1";
+    this.router.navigate(['/admin']);
+
+    //console.log(this.auth.currentUser)
+
+    /*this.router.navigate(['/admin'],
+    {
+      state: {
+        email: mail
+      }
+    }
+    );*/
+    //window.location.href= "#/admin";
 
 
   }
