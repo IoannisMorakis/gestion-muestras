@@ -1,0 +1,23 @@
+<p>project-new works!</p>
+
+<form #loginForm="ngForm" (ngSubmit)="handleRegister(loginForm.value)">
+  <div class="main">
+    <div class="input-fields">
+        <input name="name" ngModel placeholder="Name" id="name" type="name" class="input-field" />
+    </div>
+
+    <div class="input-fields">
+      <input name="owner" ngModel placeholder="Owner" id="owner" type="owner" class="input-field" />
+    </div>
+
+    <div class="input-fields">
+        <input name="integrantes" ngModel placeholder="Integrantes" id="integrantes" type="integrantes" class="input-field" />
+    </div>
+    <div class="input-fields">
+      <input name="Cliente" ngModel placeholder="Cliente" id="Cliente" type="Cliente" class="input-field" />
+    </div>
+
+
+    <button>Sign Up</button>
+  </div>
+</form>

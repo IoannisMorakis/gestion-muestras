@@ -4,11 +4,11 @@ import { Firestore, collection, deleteDoc, doc, getDocs, updateDoc } from '@angu
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  selector: 'app-muestras',
+  templateUrl: './muestras.component.html',
+  styleUrls: ['./muestras.component.css']
 })
-export class ProjectsComponent {
+export class MuestrasComponent {
   public data: any = []
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
@@ -17,7 +17,7 @@ export class ProjectsComponent {
 
   getData() {
     //console.log(this.auth.currentUser)
-    const dbInstance = collection(this.firestore, 'projects');
+    const dbInstance = collection(this.firestore, 'muestras');
     getDocs(dbInstance)
       .then((response) => {
         this.data = [...response.docs.map((item) => {
@@ -28,7 +28,7 @@ export class ProjectsComponent {
 
 
   updateData(id: string) {
-    const dataToUpdate = doc(this.firestore, 'projects', id);
+    const dataToUpdate = doc(this.firestore, 'muestras', id);
     updateDoc(dataToUpdate, {})
       .then(() => {
         alert('Data updated');
@@ -40,7 +40,7 @@ export class ProjectsComponent {
   }
 
   deleteData(id: string) {
-    const dataToDelete = doc(this.firestore, 'projects', id);
+    const dataToDelete = doc(this.firestore, 'muestras', id);
     deleteDoc(dataToDelete)
     .then(() => {
       alert('Data Deleted');
