@@ -7,6 +7,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectNewComponent } from './components/project-new/project-new.component';
 import { FormsModule } from '@angular/forms';
 import { MuestrasComponent } from './components/muestras/muestras.component';
+import { MuestrasNewComponent } from './components/muestras-new/muestras-new.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MuestrasComponent } from './components/muestras/muestras.component';
     UserComponent,
     ProjectsComponent,
     ProjectNewComponent,
-    MuestrasComponent
+    MuestrasComponent,
+    MuestrasNewComponent
   ],
   imports: [
     CommonModule,
