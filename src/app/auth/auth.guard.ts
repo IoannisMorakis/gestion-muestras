@@ -20,7 +20,6 @@ export class AuthGuard implements CanActivate{
     let user= this.auth.currentUser
     if (user) { return true; }
 
-
     this.router.navigate(['/']);
     return false;
   }
