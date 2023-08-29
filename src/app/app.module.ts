@@ -14,12 +14,14 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { UserModule } from './user/user.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AdminModule } from './admin/admin.module';
+import { PrintComponent } from './print/print.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,

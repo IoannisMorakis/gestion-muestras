@@ -1,6 +1,20 @@
 <p>barcode works!</p>
 
-<input type="text" name="txt_input" id="txt_input">
-<button id="btn_generate" (click)="generateBarcode()">Generate Barcode</button>
+
+<br>
+
+<form #loginForm="ngForm" (ngSubmit)="generateBarcode(loginForm.value)">
+  <div class="main">
+    <div class="input-fields">
+        <input name="txt_input" ngModel placeholder=" " id="txt_input" type="text" class="input-field" />
+    </div>
+
+    <br>
+
+    <button id="btn_generate">Generate Barcode</button>
+  </div>
+</form>
+
 <br><br>
-<svg id="barcode"></svg>
+<svg onclick="window.print(this)" id="barcode"></svg>
+<button (click)="toPrint()">Print</button>

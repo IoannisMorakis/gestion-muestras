@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth'
+import {Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut} from '@angular/fire/auth'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,32 +11,27 @@ import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '
 export class AppComponent {
   title = 'gestion-muestras';
 
-  constructor(public auth: Auth){
+
+  constructor(public auth: Auth, private router: Router){
 
   }
 
-  handleRegister(value: any){
-    createUserWithEmailAndPassword(this.auth, value.email, value.password)
-     .then((response: any)=>{
-        console.log(response.user)
-     })
-     .catch((err) =>{
-      alert(err.message);
-     })
+
+
+
+
+  handleSignOut(){
+    //const auth = getAuth();
+
+    signOut(this.auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      console.log("here");
+      // An error happened.
+    });
 
   }
 
-  handleLogin(value:any){
-    signInWithEmailAndPassword(this.auth, value.email, value.password)
-    .then((response: any)=>{
-       console.log(response.user)
-    })
-    .catch((err) =>{
-     alert(err.message);
-    })
-
-
-  }
 
 
 

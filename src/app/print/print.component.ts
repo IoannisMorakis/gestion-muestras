@@ -5,30 +5,36 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as JsBarcode from 'jsbarcode';
 
 @Component({
-  selector: 'app-barcode',
-  templateUrl: './barcode.component.html',
-  styleUrls: ['./barcode.component.css']
+  selector: 'app-print',
+  templateUrl: './print.component.html',
+  styleUrls: ['./print.component.css']
 })
-export class BarcodeComponent {
-  public data: any = []
-  public res: any;
+export class PrintComponent {
+  public item: any;
+
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
 
   }
 
+  ngOnInit(): void {
+    this.route.params.subscribe(param =>{
+      this.item=param;
+      console.log(param);
+      this.generateBarcode(param);
+
+    })
+
+
+  }
+
   generateBarcode(value: any){
-    var text = value.txt_input;
-    this.res=text;
+    var text = value.id;
 
         JsBarcode("#barcode", text, {
             format: "CODE128"
         });
+
+        window.print();
   }
-
-  toPrint(){
-    this.router.navigate(['/print/'+ this.res]);
-
-  }
-
 
 }

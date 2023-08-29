@@ -10,6 +10,7 @@ import {
   updateDoc,
   deleteDoc
 } from '@angular/fire/firestore'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -20,10 +21,16 @@ export class SignupComponent {
   title = 'gestion-de-muestras-de-campo';
   public data: any = []
 
-  constructor(public auth: Auth, public firestore: Firestore){
+  constructor(public auth: Auth, public firestore: Firestore, private router: Router){
     this.getData();
 
   }
+
+  Login(){
+    this.router.navigate(['/auth/login']);
+    //window.location.href='#/auth/login';
+  }
+
 
   handleRegister(value: any){
     createUserWithEmailAndPassword(this.auth, value.email, value.password)

@@ -1,5 +1,9 @@
 <p>signup works!</p>
 
+<div>
+  <button id="login" (click)= "Login()">Log In</button>
+</div>
+
 <form #loginForm="ngForm" (ngSubmit)="handleRegister(loginForm.value)">
     <div class="main">
       <div class="input-fields">

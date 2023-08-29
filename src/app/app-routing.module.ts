@@ -5,13 +5,15 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthComponent } from './auth/auth.component';
 import { UserComponent } from './user/user.component';
+import { PrintComponent } from './print/print.component';
 
 const routes: Routes = [
-
+  {path:'', redirectTo: 'auth/select', pathMatch: 'full'},
   {path:'home', component: HomeComponent},
   {path:'admin', component: AdminComponent, canActivate: [AuthGuard]},
   {path:'auth', component: AuthComponent},
-  {path: 'user', component: UserComponent}
+  {path: 'user', component: UserComponent},
+  {path: 'print/:id', component: PrintComponent}
 
 ];
 

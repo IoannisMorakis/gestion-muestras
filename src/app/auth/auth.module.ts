@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
 import { RouterModule } from '@angular/router';
 import { AuthRoutingModule } from './auth-routing.module';
+import { SelectComponent } from './components/select/select.component';
 
 
 
@@ -15,11 +16,12 @@ import { AuthRoutingModule } from './auth-routing.module';
     LoginComponent,
     SignupComponent,
     AuthComponent,
+    SelectComponent
   ],
   imports: [
     CommonModule,
-    FormsModule, 
-    RouterModule, 
+    FormsModule,
+    RouterModule,
     AuthRoutingModule
   ]
 })

@@ -14,6 +14,13 @@ export class LoginComponent {
 
   }
 
+
+  Signup(){
+    this.router.navigate(['/auth/signup']);
+    //window.location.href='#/auth/login';
+  }
+
+
   handleLogin(value:any){
     signInWithEmailAndPassword(this.auth, value.email, value.password)
     .then((response: any)=>{
