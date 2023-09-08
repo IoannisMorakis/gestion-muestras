@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from "@angular/core";
+import { Auth } from '@angular/fire/auth';
+import { Firestore } from '@angular/fire/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-scan',
@@ -7,4 +13,14 @@ import { Component } from '@angular/core';
 })
 export class ScanComponent {
 
+  //public scannerIsRunning: boolean = false;
+  //constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {}
+
+
+
+
+
+
 }
+
+
