@@ -4,6 +4,10 @@ import { Firestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as JsBarcode from 'jsbarcode';
 
+
+
+
+
 @Component({
   selector: 'app-barcode',
   templateUrl: './barcode.component.html',
@@ -29,6 +33,12 @@ export class BarcodeComponent {
     this.router.navigate(['/print/'+ this.res]);
 
   }
+
+
+
+
+
+
 
 
 }

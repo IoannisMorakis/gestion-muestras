@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path:'user', component: UserComponent, children:[
     {path: 'projects', component: ProjectsComponent},
-    {path: 'projects-new', component: ProjectNewComponent},
+    {path: 'project-new', component: ProjectNewComponent},
     {path: 'barcode', component:BarcodeComponent},
     {path: 'muestras', component:MuestrasComponent},
     {path: 'muestras-new', component:MuestrasNewComponent},

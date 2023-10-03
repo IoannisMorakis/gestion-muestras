@@ -3,21 +3,45 @@
 <form #loginForm="ngForm" (ngSubmit)="handleRegister(loginForm.value)">
   <div class="main">
     <div class="input-fields">
-        <input name="name" ngModel placeholder="Name" id="name" type="name" class="input-field" />
+      <input name="id" ngModel placeholder="ID" id="id" type="id" class="input-field" />
     </div>
 
-    <div class="input-fields">
-      <input name="owner" ngModel placeholder="Owner" id="owner" type="owner" class="input-field" />
-    </div>
-
-    <div class="input-fields">
-        <input name="integrantes" ngModel placeholder="Integrantes" id="integrantes" type="integrantes" class="input-field" />
-    </div>
     <div class="input-fields">
       <input name="cliente" ngModel placeholder="Cliente" id="cliente" type="cliente" class="input-field" />
     </div>
 
+    <div class="input-fields">
+      <input name="fecha" ngModel placeholder="Name" id="name" type="name" class="input-field" />
+    </div>
 
-    <button>Sign Up</button>
+    <div class="input-fields">
+      <input name="cultivo" ngModel placeholder="Cultivo" id="cultivo" type="cultivo" class="input-field" />
+    </div>
+
+    <div class="input-fields">
+        <input name="tipo" ngModel placeholder="Tipo" id="tipo" type="tipo" class="input-field" />
+    </div>
+
+    <div class="input-fields">
+      <input name="fitopatógeno" ngModel placeholder="Fitopatógeno" id="fitopatógeno" type="fitopatógeno" class="input-field" />
+    </div>
+
+    <div class="input-fields">
+      <input name="estado" ngModel placeholder="Estado" id="estado" type="estado" class="input-field" />
+    </div>
+
+    <div class="input-fields">
+        <input name="cordenadas" ngModel placeholder="Cordenadas" id="cordenadas" type="cordenadas" class="input-field" [(value)]="htmlToAdd" />
+    </div>
+    <div class="input-fields">
+      <input name="síntomas" ngModel placeholder="Síntomas" id="síntomas" type="síntomas" class="input-field" />
+    </div>
+
+    <div class="input-fields">
+      <input name="comentarios" ngModel placeholder="Comentarios" id="comentarios" type="comentarios" class="input-field" />
+    </div>
+
+
+    <button>Crear Muestra</button>
   </div>
 </form>

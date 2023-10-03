@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth'
+import {Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from '@angular/fire/auth'
 import {
   addDoc,
   setDoc,
@@ -47,19 +47,21 @@ export class SignupComponent {
     //const dbInstance = collection(this.firestore, 'users');
     const dbInstance = doc(this.firestore, 'users', value.email);
     if(value.password == value.confirmpassword){
-      setDoc(dbInstance, {
-        'email': value.email,
-        'role': value.role,
-        'password': value.password
-      })
-        .then(() => {
-          alert('Data Sent')
+      if(value.role=='Invetigador'||value.role=='Cliente'){
+        setDoc(dbInstance, {
+          'email': value.email,
+          'role': value.role,
+          'password': value.password
         })
-        .catch((err) => {
-          alert(err.message)
-        })
+          .then(() => {
+            alert('Data Sent')
+          })
+          .catch((err) => {
+            alert(err.message)
+          })
+      }else{alert('Rol no reconocido');}
      }else {
-      alert('No Iguales')
+      alert('Claves No Iguales');
     }
   }
 
@@ -71,6 +73,16 @@ export class SignupComponent {
           return { ...item.data(), id: item.id }
         })]
       })
+  }
+
+  Salir(){
+    signOut(this.auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+    this.router.navigate(['auth/select']);
+    //window.location.href='#/auth/login';
   }
 
 }

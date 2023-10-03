@@ -2,6 +2,13 @@
 
 <form #loginForm="ngForm" (ngSubmit)="handleRegister(loginForm.value)">
   <div class="main">
+
+    <p style="color: red;"> * Todo Projecto requiere un identificador único </p>
+    <div class="input-fields">
+      <input name="id" ngModel placeholder="ID" id="id" type="id" class="input-field" />
+    </div>
+
+
     <div class="input-fields">
         <input name="name" ngModel placeholder="Name" id="name" type="name" class="input-field" />
     </div>
@@ -10,14 +17,18 @@
       <input name="owner" ngModel placeholder="Owner" id="owner" type="owner" class="input-field" />
     </div>
 
-    <div class="input-fields">
+    <div class="input-fields" >
         <input name="integrantes" ngModel placeholder="Integrantes" id="integrantes" type="integrantes" class="input-field" />
     </div>
+
+    <!--
+      <button type="button" (click)="addElement()">Add</button>
+    -->
     <div class="input-fields">
       <input name="cliente" ngModel placeholder="Cliente" id="cliente" type="cliente" class="input-field" />
     </div>
 
 
-    <button>Sign Up</button>
+    <button>Crear Projecto</button>
   </div>
 </form>

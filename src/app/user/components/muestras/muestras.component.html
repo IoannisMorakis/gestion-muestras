@@ -1,8 +1,50 @@
 <p>muestras works!</p>
+
+<button class="salir" (click)="Salir()">
+</button>
+
+<h1 class="subTituloText">Muestras</h1>
+  <div class="list">
+    <table>
+      <tr>
+        <th> Codigo </th>
+        <th> Fecha </th>
+        <th> Cultivo</th>
+        <th> Coordenadas </th>
+        <th> </th>
+
+      </tr>
+      <tr *ngFor="let item of data" >
+
+
+        <td>{{ item.codigo  }}</td>
+        <td >{{ item.fecha }}</td>
+        <td>{{ item.cultivo}}</td>
+        <td>{{ item.coordenadas}}</td>
+
+        <td>
+          <button class="detalles"></button>
+          <button class="edit"></button>
+          <button class="imprimir"></button>
+
+        </td>
+
+      </tr>
+    </table>
+
+
+
+    <button class="boton" id="agregar" (click)="newMuestra()">
+      Agregar
+    </button>
+
+  </div>
+
+<!--
 <ul>
   <li *ngFor="let item of data" >
     <p contenteditable="true">
-    {{ item.name }}
+    {{ item.codigo }}
     {{ item.owner }}
     {{ item.integrantes }}
     </p>
@@ -15,3 +57,5 @@
     </button>
   </li>
 </ul>
+-->
+

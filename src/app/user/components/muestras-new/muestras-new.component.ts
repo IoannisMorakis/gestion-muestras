@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Firestore, collection, doc, getDocs, setDoc } from '@angular/fire/firestore';
 
@@ -10,6 +10,9 @@ import { Firestore, collection, doc, getDocs, setDoc } from '@angular/fire/fires
 export class MuestrasNewComponent {
   title = 'gestion-de-muestras-de-campo';
   public data: any = []
+
+  @ViewChild('geo') geo: ElementRef | undefined;
+  htmlToAdd: any;
 
   constructor(public auth: Auth, public firestore: Firestore){
     this.getData();
@@ -42,6 +45,38 @@ export class MuestrasNewComponent {
         })]
       })
   }
+
+
+  showPosition(position: any) {
+    /*
+      const p: HTMLParagraphElement = this.renderer.createElement('p');
+      p.innerHTML = "add new"
+      this.renderer.appendChild(this.div.nativeElement, p)
+    */
+
+
+    //x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+  }
+
+  getLocation() {
+    //d1.nativeElement.insertAdjacentHTML('beforeend', '<div class="two">two</div>');
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+
+    } else {
+      //x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+  }
+
+
+  /*
+    <div class="one" [innerHtml]="htmlToAdd"></div>
+    this.htmlToAdd = '<div class="two">two</div>';
+  */
+
 
 
 }

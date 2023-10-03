@@ -1,5 +1,45 @@
 <p>projects works!</p>
 
+<button class="salir" (click)="Salir()">
+</button>
+
+<h1 class="subTituloText">Proyectos</h1>
+  <div class="list">
+    <table>
+      <tr>
+        <th> Nombre </th>
+        <th> Dueño </th>
+        <th> Integrantes</th>
+        <th> Clientes </th>
+        <th> </th>
+
+      </tr>
+      <tr *ngFor="let item of data" >
+
+
+        <td>{{ item.name  }}</td>
+        <td >{{ item.owner }}</td>
+        <td>{{ item.integrantes}}</td>
+        <td>{{ item.cliente }}</td>
+
+        <td>
+          <button class="muestras" (click)="Muestras()"></button>
+          <button class="edit"></button>
+
+        </td>
+
+      </tr>
+    </table>
+
+
+
+    <button class="boton" id="agregar" (click)="newProject()">
+      Agregar
+    </button>
+
+  </div>
+
+<!--
 <ul>
   <li *ngFor="let item of data" >
     <p contenteditable="true">
@@ -17,3 +57,4 @@
     </button>
   </li>
 </ul>
+-->

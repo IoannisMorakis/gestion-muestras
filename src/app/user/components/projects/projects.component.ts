@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, getAuth, signOut } from '@angular/fire/auth';
 import { Firestore, collection, deleteDoc, doc, getDocs, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -49,6 +49,33 @@ export class ProjectsComponent {
     .catch((err) => {
       alert(err.message)
     })
+  }
+
+  newProject(){
+    this.router.navigate(['user/project-new']);
+    //window.location.href='#/auth/login';
+  }
+
+  EditProject(){
+    this.router.navigate(['user/project-new']);
+    //window.location.href='#/auth/login';
+  }
+
+  Muestras(){
+    this.router.navigate(['user/muestras']);
+    //window.location.href='#/auth/login';
+  }
+
+
+
+  Salir(){
+    signOut(this.auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+    this.router.navigate(['auth/select']);
+    //window.location.href='#/auth/login';
   }
 
 }

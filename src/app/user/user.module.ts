@@ -11,6 +11,12 @@ import { MuestrasNewComponent } from './components/muestras-new/muestras-new.com
 import { ScanComponent } from './components/scan/scan.component';
 import { BarcodeComponent } from './components/barcode/barcode.component';
 
+import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
+import { SafePipe } from './safe.pipe';
+
+LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res))
+
+
 
 @NgModule({
   declarations: [
@@ -20,12 +26,14 @@ import { BarcodeComponent } from './components/barcode/barcode.component';
     MuestrasComponent,
     MuestrasNewComponent,
     ScanComponent,
-    BarcodeComponent
+    BarcodeComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxScannerQrcodeModule
   ]
 })
 export class UserModule { }

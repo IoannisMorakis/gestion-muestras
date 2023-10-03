@@ -16,12 +16,17 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AdminModule } from './admin/admin.module';
 import { PrintComponent } from './print/print.component';
 
+import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
+import { SafePipe } from './safe.pipe';
+
+LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res))
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrintComponent
+    PrintComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { PrintComponent } from './print/print.component';
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     UserModule,
-    AdminModule
+    AdminModule,
+    NgxScannerQrcodeModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy}
