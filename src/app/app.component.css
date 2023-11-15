@@ -1,4 +1,4 @@
-body{
+/*body{
   margin: 0px;
 }
 
@@ -29,7 +29,7 @@ button{
 
 
 
-.homeBox {/*Home box*/
+.homeBox {
 	background-color:rgba(62.00000010430813, 194.00000363588333, 143.00000667572021, 1);
 	border-right: 4px solid white;
 	width:20%;
@@ -39,7 +39,7 @@ button{
 	top:0%;
 	text-align:center;
 }
-.homeText { /*Home text*/
+.homeText {
 	color:rgba(255, 255, 255, 1);
 	display: inline-block;
   	vertical-align: middle;
@@ -49,7 +49,7 @@ button{
 	letter-spacing:0;
 
 }
-.tituloBox { /*Titulo box*/
+.tituloBox {
 	background-color:rgba(62.00000010430813, 194.00000363588333, 143.00000667572021, 1);
 	width:80%;
 	height:10%;
@@ -58,7 +58,7 @@ button{
 	top:0%;
 	text-align:center;
 }
-.tituloText { /*Titulo Texto*/
+.tituloText {
 	color:rgba(255, 255, 255, 1);
 	display: inline-block;
   	vertical-align: middle;
@@ -67,7 +67,7 @@ button{
 	font-size:40px;
 	letter-spacing:0;
 }
-.logoCiens { /*Logo Ciens*/
+.logoCiens {
 	width:69px;
 	height:69px;
 	position:absolute;
@@ -77,7 +77,7 @@ button{
 	background-repeat:no-repeat;
 	background-size:cover;
 }
-.logoUcv { /*Logo Ucv*/
+.logoUcv {
 	width:69px;
 	height:69px;
 	position:absolute;
@@ -87,5 +87,5 @@ button{
 	background-repeat:no-repeat;
 	background-size:cover;
 }
-
+*/
 

@@ -1,17 +1,19 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { Firestore, collection, doc, getDocs, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, deleteDoc, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-muestras-new',
-  templateUrl: './muestras-new.component.html',
-  styleUrls: ['./muestras-new.component.css']
+  selector: 'app-project-edit',
+  templateUrl: './project-edit.component.html',
+  styleUrls: ['./project-edit.component.css']
 })
-export class MuestrasNewComponent {
+export class ProjectEditComponent {
+
   title = 'gestion-de-muestras-de-campo';
   public data: any = []
   public res: any;
+  public item: any;
   public static text: string = "";
 
   @ViewChild('geo') geo: any;//ElementRef | undefined;
@@ -20,7 +22,8 @@ export class MuestrasNewComponent {
   @Output() somethingChange= new EventEmitter<any>();
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore){
-    //this.getData();
+    this.getData();
+    this.MyQuery();
   }
 
   handleRegister(value: any){
@@ -71,8 +74,8 @@ export class MuestrasNewComponent {
     //this.geo=text;
     var x = position.coords.latitude;
     var y = position.coords.longitude;
-    MuestrasNewComponent.text = x+", "+ y;
-    console.log(MuestrasNewComponent.text);
+    //MuestrasNewComponent.text = x+", "+ y;
+    //console.log(MuestrasNewComponent.text);
 
 
 
@@ -100,7 +103,7 @@ export class MuestrasNewComponent {
       console.log("error");
     }
     setTimeout(() => {
-      this.res= MuestrasNewComponent.text;
+      //this.res= MuestrasNewComponent.text;
       console.log(this.res);
       }
       ,1000);
@@ -110,11 +113,33 @@ export class MuestrasNewComponent {
   }
 
 
+  async MyQuery(){
+    const q = query(collection(this.firestore, "muestras"), where("codigo", "==","EJ-01"));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      this.item=doc.data();
+      console.log(doc.id, " => ", doc.data());
+    });
+
+  }
+
+
   /*
     <div class="one" [innerHtml]="htmlToAdd"></div>
     this.htmlToAdd = '<div class="two">two</div>';
   */
 
-
-
+  deleteData(id: string) {
+    const dataToDelete = doc(this.firestore, 'users', id);
+    deleteDoc(dataToDelete)
+    .then(() => {
+      alert('Data Deleted');
+      this.getData()
+    })
+    .catch((err) => {
+      alert(err.message)
+    })
+  }
 }

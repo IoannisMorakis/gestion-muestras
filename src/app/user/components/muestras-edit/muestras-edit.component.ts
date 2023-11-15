@@ -1,18 +1,19 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { Firestore, collection, doc, getDocs, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, deleteDoc, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-muestras-new',
-  templateUrl: './muestras-new.component.html',
-  styleUrls: ['./muestras-new.component.css']
+  selector: 'app-muestras-edit',
+  templateUrl: './muestras-edit.component.html',
+  styleUrls: ['./muestras-edit.component.css']
 })
-export class MuestrasNewComponent {
+export class MuestrasEditComponent {
   title = 'gestion-de-muestras-de-campo';
   public data: any = []
   public res: any;
-  public static text: string = "";
+  public item: any;
+  public text: any;
 
   @ViewChild('geo') geo: any;//ElementRef | undefined;
   public htmlToAdd: any;
@@ -20,7 +21,21 @@ export class MuestrasNewComponent {
   @Output() somethingChange= new EventEmitter<any>();
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore){
-    //this.getData();
+    this.getData();
+    this.MyQuery();
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(param =>{
+      this.text=param['id'];
+      console.log(param);
+      console.log(param['id']);
+      //this.generateBarcode(param);
+
+    })
+    this.getData();
+    this.MyQuery();
+
   }
 
   handleRegister(value: any){
@@ -71,8 +86,8 @@ export class MuestrasNewComponent {
     //this.geo=text;
     var x = position.coords.latitude;
     var y = position.coords.longitude;
-    MuestrasNewComponent.text = x+", "+ y;
-    console.log(MuestrasNewComponent.text);
+    //MuestrasNewComponent.text = x+", "+ y;
+    //console.log(MuestrasNewComponent.text);
 
 
 
@@ -100,7 +115,7 @@ export class MuestrasNewComponent {
       console.log("error");
     }
     setTimeout(() => {
-      this.res= MuestrasNewComponent.text;
+      //this.res= MuestrasNewComponent.text;
       console.log(this.res);
       }
       ,1000);
@@ -110,11 +125,35 @@ export class MuestrasNewComponent {
   }
 
 
+  async MyQuery(){
+    let str=this.text;
+    const q = query(collection(this.firestore, "muestras"), where("codigo", "==",str));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      this.item=doc.data();
+      console.log(doc.id, " => ", doc.data());
+    });
+
+  }
+
+
   /*
     <div class="one" [innerHtml]="htmlToAdd"></div>
     this.htmlToAdd = '<div class="two">two</div>';
   */
 
-
+  deleteData(id: string) {
+    const dataToDelete = doc(this.firestore, 'users', id);
+    deleteDoc(dataToDelete)
+    .then(() => {
+      alert('Data Deleted');
+      this.getData()
+    })
+    .catch((err) => {
+      alert(err.message)
+    })
+  }
 
 }

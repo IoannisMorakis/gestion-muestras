@@ -1,47 +1,92 @@
 <p>muestras-new works!</p>
 
-<form #loginForm="ngForm" (ngSubmit)="handleRegister(loginForm.value)">
-  <div class="main">
-    <div class="input-fields">
-      <input name="id" ngModel placeholder="ID" id="id" type="id" class="input-field" />
-    </div>
+<h1 class="subTituloText">Nueva Muestra</h1>
 
-    <div class="input-fields">
-      <input name="cliente" ngModel placeholder="Cliente" id="cliente" type="cliente" class="input-field" />
-    </div>
+<div  class="loginBox">
 
-    <div class="input-fields">
-      <input name="fecha" ngModel placeholder="Name" id="name" type="name" class="input-field" />
-    </div>
-
-    <div class="input-fields">
-      <input name="cultivo" ngModel placeholder="Cultivo" id="cultivo" type="cultivo" class="input-field" />
-    </div>
-
-    <div class="input-fields">
-        <input name="tipo" ngModel placeholder="Tipo" id="tipo" type="tipo" class="input-field" />
-    </div>
-
-    <div class="input-fields">
-      <input name="fitopatógeno" ngModel placeholder="Fitopatógeno" id="fitopatógeno" type="fitopatógeno" class="input-field" />
-    </div>
-
-    <div class="input-fields">
-      <input name="estado" ngModel placeholder="Estado" id="estado" type="estado" class="input-field" />
-    </div>
-
-    <div class="input-fields">
-        <input name="cordenadas" ngModel placeholder="Cordenadas" id="cordenadas" type="cordenadas" class="input-field" [(value)]="htmlToAdd" />
-    </div>
-    <div class="input-fields">
-      <input name="síntomas" ngModel placeholder="Síntomas" id="síntomas" type="síntomas" class="input-field" />
-    </div>
-
-    <div class="input-fields">
-      <input name="comentarios" ngModel placeholder="Comentarios" id="comentarios" type="comentarios" class="input-field" />
-    </div>
+  <form #loginForm="ngForm" (ngSubmit)="handleRegister(loginForm.value)">
+    <div class="main">
 
 
-    <button>Crear Muestra</button>
-  </div>
-</form>
+      <div class="input-fields">
+        <span  class="Text">Codigo:</span>
+        <input name="codigo" ngModel placeholder="codigo" id="codigo" type="codigo" class="input-field" />
+      </div>
+
+
+      <div class="input-fields">
+        <span  class="Text">Cliente:</span>
+        <input name="cliente" ngModel placeholder="Cliente" id="cliente" type="cliente" class="input-field" />
+      </div>
+
+
+      <div class="input-fields">
+        <span  class="Text">Fecha:</span>
+        <input name="fecha" ngModel placeholder="Fecha" id="fecha" type="fecha" class="input-field" />
+      </div>
+
+
+      <div class="input-fields">
+        <span  class="Text">Cultivo:</span>
+        <input name="cultivo" ngModel placeholder="Cultivo" id="cultivo" type="cultivo" class="input-field" />
+      </div>
+
+
+      <div class="input-fields">
+        <span  class="Text">Tipo:</span>
+        <input list="tipos" name="tipo" ngModel placeholder="Tipo" id="tipo" type="tipo" class="input-field" >
+        <datalist id="tipos">
+          <option value="Hibrido">
+          <option value="Variedad">
+            <option value="Clone">
+        </datalist>
+      </div>
+
+
+      <div class="input-fields">
+        <span  class="Text">Fitopatógeno:</span>
+        <input list="fitopatógenos" name="fitopatógeno" ngModel placeholder="Fitopatógeno" id="fitopatógeno" type="fitopatógeno" class="input-field" />
+        <datalist id="fitopatógenos">
+          <option value="Hongos">
+          <option value="Bacterias">
+            <option value="Virus">
+        </datalist>
+      </div>
+
+      <div class="input-fields">
+        <span  class="Text">Codigo:</span>
+        <input name="estado" ngModel placeholder="Estado" id="estado" type="estado" class="input-field" />
+      </div>
+
+
+      <div class="input-fields">
+        <span  class="Text">Cordenadas:</span>
+        <input name="cordenadas" ngModel placeholder="Cordenadas" id="cordenadas" type="cordenadas" class="input-field" [(ngModel)]="res" />
+        <div class="bUbicacion" (click)="getLocation()"><img src="../../../../assets/Ubicacion.png" alt="U"></div>
+      </div>
+
+
+      <div class="input-fields">
+        <span  class="Text">Síntomas:</span>
+        <!-- <input name="síntomas" ngModel placeholder="Síntomas" id="síntomas" type="síntomas" class="input-field" />-->
+        <textarea name="síntomas" ngModel placeholder="Síntomas" id="síntomas"  rows="4" cols="50"></textarea>
+      </div>
+
+
+
+      <div class="input-fields">
+
+        <span  class="Text">Comentarios:</span>
+
+        <!--<input name="comentarios" ngModel placeholder="Comentarios" id="comentarios" type="comentarios" class="input-field" /> -->
+        <textarea name="comentarios" ngModel placeholder="Comentarios" id="comentarios"  rows="4" cols="50"> </textarea>
+      </div>
+
+
+
+      <button class="boton">Crear Muestra</button>
+    </div>
+
+
+  </form>
+</div>

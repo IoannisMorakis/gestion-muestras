@@ -7,6 +7,7 @@ import { BarcodeComponent } from './components/barcode/barcode.component';
 import { ProjectNewComponent } from './components/project-new/project-new.component';
 import { MuestrasNewComponent } from './components/muestras-new/muestras-new.component';
 import { ScanComponent } from './components/scan/scan.component';
+import { MuestrasEditComponent } from './components/muestras-edit/muestras-edit.component';
 
 
 const routes: Routes = [
@@ -15,8 +16,9 @@ const routes: Routes = [
     {path: 'projects', component: ProjectsComponent},
     {path: 'project-new', component: ProjectNewComponent},
     {path: 'barcode', component:BarcodeComponent},
-    {path: 'muestras', component:MuestrasComponent},
-    {path: 'muestras-new', component:MuestrasNewComponent},
+    {path: 'muestras/:id', component:MuestrasComponent},
+    {path: 'muestras-new/:id', component:MuestrasNewComponent},
+    {path: 'muestras-edit/:id', component:MuestrasEditComponent},
     {path: 'scan', component:ScanComponent}
 
   ]}

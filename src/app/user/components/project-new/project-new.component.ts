@@ -1,6 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { Firestore, collection, doc, getDocs, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, doc, getDoc, getDocs, setDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-project-new',
@@ -22,30 +22,51 @@ export class ProjectNewComponent {
 
   }
 
+  randomCode(){
+    let code = '';
+    const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const codeLength = 20;
+
+    for (let i = 0; i < codeLength; i++) {
+      code += alpha.charAt(Math.floor(Math.random() * alpha.length));
+    }
+
+    return code;
+  };
+
   handleRegister(value: any){
      this.addData(value);
   }
 
-  addData(value: any) {
+  async addData(value: any) {
     //const dbInstance = collection(this.firestore, 'users');
     let array: any=[];
+    let projectCode = this.randomCode();
     let integrantesArr= value.integrantes.split(/[\s,]+/);
-    const dbInstance = doc(this.firestore, 'projects', value.id);
-    setDoc(dbInstance,
-      {
-        name: value.name,
-        cliente: value.cliente,
-        owner: value.owner,
-        integrantes: integrantesArr
-      }
+    const dbInstance = doc(this.firestore, 'projects',projectCode); //value.id
+    //
+    const docSnap= await getDoc(dbInstance);
+    if(docSnap.exists()){ //
+      alert('Needs a Unique Code');
 
-      )
-      .then(() => {
-        alert('Data Sent')
-      })
-      .catch((err) => {
-        alert(err.message)
-      })
+    }else {
+
+      setDoc(dbInstance,
+        {
+          name: value.name,
+          cliente: value.cliente,
+          owner: value.owner,
+          integrantes: integrantesArr
+        }
+
+        )
+        .then(() => {
+          alert('Data Sent')
+        })
+        .catch((err) => {
+          alert(err.message)
+        })
+    }
 
   }
 

@@ -13,6 +13,8 @@ import { BarcodeComponent } from './components/barcode/barcode.component';
 
 import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
 import { SafePipe } from './safe.pipe';
+import { MuestrasEditComponent } from './components/muestras-edit/muestras-edit.component';
+import { ProjectEditComponent } from './components/project-edit/project-edit.component';
 
 LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res))
 
@@ -27,7 +29,9 @@ LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res))
     MuestrasNewComponent,
     ScanComponent,
     BarcodeComponent,
-    SafePipe
+    SafePipe,
+    MuestrasEditComponent,
+    ProjectEditComponent
   ],
   imports: [
     CommonModule,

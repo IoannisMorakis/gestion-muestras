@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Auth, getAuth, signOut } from '@angular/fire/auth';
-import { Firestore, collection, deleteDoc, doc, getDocs, updateDoc } from '@angular/fire/firestore';
+import { Auth, getAuth, onAuthStateChanged, signOut } from '@angular/fire/auth';
+import { Firestore, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,14 +9,30 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent {
-  public data: any = []
+  public data: any = [];
+  public list: any = [];
+  public email: string ="";
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
-    this.getData()
+    this.getData();
+    this.MyQuery();
   }
 
+
+
   getData() {
-    //console.log(this.auth.currentUser)
+    //
+    const gauth = getAuth();
+    //console.log(gauth);
+    onAuthStateChanged(gauth, (user) => {
+      if (user) {
+        //console.log(user.email);
+
+        if(user.email){this.email= user.email;}
+      }
+    });
+    //
+
     const dbInstance = collection(this.firestore, 'projects');
     getDocs(dbInstance)
       .then((response) => {
@@ -61,8 +77,8 @@ export class ProjectsComponent {
     //window.location.href='#/auth/login';
   }
 
-  Muestras(){
-    this.router.navigate(['user/muestras']);
+  Muestras(id: any){
+    this.router.navigate(['user/muestras/'+ id]);
     //window.location.href='#/auth/login';
   }
 
@@ -77,5 +93,60 @@ export class ProjectsComponent {
     this.router.navigate(['auth/select']);
     //window.location.href='#/auth/login';
   }
+
+
+  //
+  async MyQuery(){
+    const gauth = getAuth();
+    let temail: string;
+    temail="";
+    console.log(gauth);
+    onAuthStateChanged(gauth, async (user) => {
+      if (user) {
+        console.log(user.email);
+        if(user.email){
+          temail =user.email;
+
+          //console.log(temail);
+          //email="giorgosmorakis@hotmail.com";
+          //console.log(temail == "giorgosmorakis@hotmail.com");
+
+          const q = query(collection(this.firestore, "projects"), where("owner", "==", temail));
+
+          getDocs(q)
+          .then((response) => {
+            this.data = [...response.docs.map((item) => {
+              return { ...item.data(), id: item.id }
+            })]
+          });
+
+
+          /*
+          const querySnapshot = await getDocs(q)
+          querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            console.log("here2");
+            //this.list= doc;
+            //this.data=doc;
+          });
+          */
+
+        }
+
+
+
+      }
+
+    });
+
+
+    console.log("done");
+    //
+
+  }
+  //
+
+
 
 }
