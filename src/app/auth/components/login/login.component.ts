@@ -71,7 +71,7 @@ export class LoginComponent {
           this.router.navigate(['/user/projects']);
         }
         else if(info['role']=="Cliente"){
-          this.router.navigate(['/client']);
+          this.router.navigate(['/client/projects']);
         }
         else{
           ;

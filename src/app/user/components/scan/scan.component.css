@@ -5,7 +5,7 @@ h1, h5, p {
 }
 div {
   text-align: center;
-  background: #fdfdfd;
+  /*background: #fdfdfd;*/
 }
 div button {
   border-radius: 50%;
@@ -26,10 +26,18 @@ div .data {
 }
 
 .screen{
+
   display: block;
   height: 50%;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+
+}
+
+.container{
+  top: 25%;
+  width: 100%;
+  position: absolute;
 
 }

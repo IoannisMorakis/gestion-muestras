@@ -23,8 +23,37 @@ export class UserComponent {
       console.log("here");
       // An error happened.
     });
+    this.router.navigate(['auth/select']);
 
   }
+
+  Home(){
+
+    this.router.navigate(['user/projects']);
+    //window.location.href='#/auth/login';
+  }
+
+  Projectos(){
+
+    this.router.navigate(['user/projects']);
+    //window.location.href='#/auth/login';
+  }
+  Muestras(){
+
+    this.router.navigate(['user/muestras-all']);
+    //window.location.href='#/auth/login';
+  }
+
+  Clientes(){
+    this.router.navigate(['user/clients']);
+
+  }
+
+  Unidades(){
+    this.router.navigate(['user/unidad-produccion-all']);
+
+  }
+
 
 
 }

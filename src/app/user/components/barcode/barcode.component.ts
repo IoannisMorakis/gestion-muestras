@@ -16,7 +16,25 @@ import * as JsBarcode from 'jsbarcode';
 export class BarcodeComponent {
   public data: any = []
   public res: any;
+  public item: any;
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
+
+  }
+
+  ngOnInit(): void {
+    let code;
+    this.route.params.subscribe(param =>{
+      this.item=param['id'];
+      code=param['id'];
+      //this.pid=param['id'];
+
+      console.log(param);
+      console.log(param['id']);
+      //this.generateBarcode(code);
+
+    })
+    //this.getData();
+    //this.MyQuery();
 
   }
 

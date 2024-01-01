@@ -14,14 +14,15 @@ export class ProjectsComponent {
   public email: string ="";
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
-    this.getData();
+    //this.getData();
+
     this.MyQuery();
   }
 
 
-
   getData() {
     //
+
     const gauth = getAuth();
     //console.log(gauth);
     onAuthStateChanged(gauth, (user) => {
@@ -67,6 +68,11 @@ export class ProjectsComponent {
     })
   }
 
+  infoProject(id: any){
+    this.router.navigate(['user/project-info/'+ id]);
+    //window.location.href='#/auth/login';
+  }
+
   newProject(){
     this.router.navigate(['user/project-new']);
     //window.location.href='#/auth/login';
@@ -77,14 +83,35 @@ export class ProjectsComponent {
     //window.location.href='#/auth/login';
   }
 
+  Unidades(id: any){
+    this.router.navigate(['user/unidad-produccion/'+ id]);
+    //window.location.href='#/auth/login';
+  }
+
   Muestras(id: any){
     this.router.navigate(['user/muestras/'+ id]);
     //window.location.href='#/auth/login';
   }
 
+  editProyecto(id: any){
+    this.router.navigate(['user/project-edit/'+ id]);
+    //window.location.href='#/auth/login';
+  }
+
+  Scan(){
+
+    this.router.navigate(['user/scan']);
+    //window.location.href='#/auth/login';
+  }
+
+  Home(){
+
+    this.router.navigate(['user/projects']);
+    //window.location.href='#/auth/login';
+  }
 
 
-  Salir(){
+  logOut(){
     signOut(this.auth).then(() => {
       // Sign-out successful.
     }).catch((error) => {

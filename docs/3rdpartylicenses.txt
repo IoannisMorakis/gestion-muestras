@@ -89,6 +89,9 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 jsbarcode
 MIT
 
+ngx-scanner-qrcode
+LGPL-2.1+
+
 rxjs
 Apache-2.0
                                Apache License

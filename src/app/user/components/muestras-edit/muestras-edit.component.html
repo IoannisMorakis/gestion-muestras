@@ -54,15 +54,26 @@
         </datalist>
       </div>
 
+
       <div class="input-fields">
-        <span  class="Text">Codigo:</span>
-        <input name="estado" ngModel placeholder="Estado" id="estado" type="estado" class="input-field" [(ngModel)]= "item.codigo"  />
+        <span  class="Text">Estado:</span>
+        <input name="estado" ngModel placeholder="Estado" id="estado" type="estado" class="input-field" [(ngModel)]= "item.estado"  />
+      </div>
+
+      <div class="input-fields">
+        <span  class="Text">Lote:</span>
+        <input name="lote" ngModel placeholder="Lote" id="lote" type="lote" class="input-field" [(ngModel)]= "item.lote"/>
+      </div>
+
+      <div class="input-fields">
+        <span  class="Text">Repetición:</span>
+        <input name="repeticion" ngModel placeholder="Repeticion" id="repeticion" type="repeticion" class="input-field" [(ngModel)]= "item.repeticion"/>
       </div>
 
 
       <div class="input-fields">
-        <span  class="Text">Cordenadas:</span>
-        <input name="cordenadas" ngModel placeholder="Cordenadas" id="cordenadas" type="cordenadas" class="input-field" [(ngModel)]="res" />
+        <span  class="Text">Coordenadas:</span>
+        <input name="coordenadas" ngModel placeholder="Coordenadas" id="coordenadas" type="coordenadas" class="input-field" [(ngModel)]="res" />
         <div class="bUbicacion" (click)="getLocation()"><img src="../../../../assets/Ubicacion.png" alt="U"></div>
       </div>
 

@@ -1,5 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { getDatabase } from '@angular/fire/database/firebase';
 import { Firestore, collection, doc, getDoc, getDocs, setDoc } from '@angular/fire/firestore';
 
 @Component({
@@ -45,8 +46,9 @@ export class ProjectNewComponent {
     let integrantesArr= value.integrantes.split(/[\s,]+/);
     const dbInstance = doc(this.firestore, 'projects',projectCode); //value.id
     //
+
     const docSnap= await getDoc(dbInstance);
-    if(docSnap.exists()){ //
+    if(docSnap){ //
       alert('Needs a Unique Code');
 
     }else {
@@ -69,6 +71,7 @@ export class ProjectNewComponent {
     }
 
   }
+
 
   getData() {
     const dbInstance = collection(this.firestore, 'projects');

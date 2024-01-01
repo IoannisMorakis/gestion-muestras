@@ -1,7 +1,7 @@
 .list{
   position: absolute;
-  left:30%;
-	top:35%;
+  left:25%;
+	top:38%;
 }
 
 
@@ -20,6 +20,62 @@ th{
 table {
   border-collapse: collapse;
 }
+
+
+
+.username{
+  width: 119px;
+  height: 17px;
+  left: 4%;
+  top: 17%;
+  position: absolute;
+  color: #4C9EFF;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 400;
+  text-decoration: underline;
+  word-wrap: break-word;
+}
+
+
+.logout{
+  width: 128px;
+  height: 23px;
+  left: 4%;
+  top: 23%;
+  position: absolute;
+  color: #4C9EFF;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 400; word-wrap: break-word;
+}
+
+
+.scanbutton{
+  width: 153px;
+  height: 36px;
+  left: 49%;
+  top: 30%;
+  position: absolute;
+  background: #4C9EFF;
+  border-radius: 30px;
+}
+
+.scantext{
+  width: 126px;
+  height: 16px;
+  left: 50%;
+  top: 31%;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: Verdana;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+
 
 .boton {
   /*box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);*/
@@ -49,7 +105,7 @@ table {
 	font-size:48px;
 	letter-spacing:0;
   left:45%;
-	top:17%;
+	top:20%;
 }
 
 
@@ -86,3 +142,15 @@ table {
   left: 0%;
   top: 0%
 }
+
+.detalles{
+  border: none;
+  background-color: #D9D9D9;
+  width:25px;
+  height: 25px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-image:url(../../../../assets/info.png);
+}
+

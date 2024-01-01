@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { Firestore, collection, deleteDoc, doc, getDocs, query, setDoc, where } from '@angular/fire/firestore';
+import { Firestore, collection, deleteDoc, doc, getDocs, getFirestore, query, setDoc, updateDoc, where } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,9 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MuestrasEditComponent {
   title = 'gestion-de-muestras-de-campo';
   public data: any = []
-  public res: any;
+  public res: any = "";
   public item: any;
-  public text: any;
+  public x: any;
+  public pid: any;
+  public static text: string = "";
 
   @ViewChild('geo') geo: any;//ElementRef | undefined;
   public htmlToAdd: any;
@@ -21,13 +23,13 @@ export class MuestrasEditComponent {
   @Output() somethingChange= new EventEmitter<any>();
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore){
-    this.getData();
-    this.MyQuery();
+    //this.getData();
+    //this.MyQuery();
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(param =>{
-      this.text=param['id'];
+      this.x=param['id'];
       console.log(param);
       console.log(param['id']);
       //this.generateBarcode(param);
@@ -39,13 +41,31 @@ export class MuestrasEditComponent {
   }
 
   handleRegister(value: any){
-     this.addData(value);
+    //console.log(value);
+    this.addData(value);
   }
 
-  addData(value: any) {
+  async addData(value: any) {
     //const dbInstance = collection(this.firestore, 'users');
+    console.log(value);
     const dbInstance = doc(this.firestore, 'muestras', value.codigo);
-    setDoc(dbInstance, value)
+
+    updateDoc(dbInstance,
+      {
+        codigo: value.codigo,
+        cliente: value.cliente,
+        fecha: value.fecha,
+        cultivo: value.cultivo,
+        tipo: value.tipo,
+        fitopatogeno: value.fitopatogeno,
+        estado: value.estado,
+        coordenadas: value.coordenadas,
+        sintomas: value.sintomas,
+        comentarios: value.comentarios,
+        project: this.pid
+      }
+
+      )
       .then(() => {
 
         alert('Data Sent')
@@ -53,7 +73,8 @@ export class MuestrasEditComponent {
       .catch((err) => {
         alert(err.message)
       })
-      console.log(value.comentarios)
+      console.log(this.pid)
+
 
   }
 
@@ -65,6 +86,7 @@ export class MuestrasEditComponent {
           return { ...item.data(), id: item.id }
         })]
       })
+
   }
 
 
@@ -86,7 +108,7 @@ export class MuestrasEditComponent {
     //this.geo=text;
     var x = position.coords.latitude;
     var y = position.coords.longitude;
-    //MuestrasNewComponent.text = x+", "+ y;
+    MuestrasEditComponent.text = x+", "+ y;
     //console.log(MuestrasNewComponent.text);
 
 
@@ -115,7 +137,7 @@ export class MuestrasEditComponent {
       console.log("error");
     }
     setTimeout(() => {
-      //this.res= MuestrasNewComponent.text;
+      this.res= MuestrasEditComponent.text;
       console.log(this.res);
       }
       ,1000);
@@ -126,16 +148,20 @@ export class MuestrasEditComponent {
 
 
   async MyQuery(){
-    let str=this.text;
+    let str=this.x;
     const q = query(collection(this.firestore, "muestras"), where("codigo", "==",str));
 
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      this.item=doc.data();
-      console.log(doc.id, " => ", doc.data());
-    });
-
+    if(!querySnapshot.empty){
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        this.item=doc.data();
+        console.log(doc.id, " => ", doc.data());
+        //
+        this.res=this.item.coordenadas;
+        this.pid=this.item.project;
+      });
+    }
   }
 
 
@@ -145,15 +171,20 @@ export class MuestrasEditComponent {
   */
 
   deleteData(id: string) {
-    const dataToDelete = doc(this.firestore, 'users', id);
+    let str=this.x;
+    const dataToDelete = doc(this.firestore, 'muestras', str);
+    //console.log(id);
+    //console.log(dataToDelete);
     deleteDoc(dataToDelete)
     .then(() => {
       alert('Data Deleted');
-      this.getData()
+      //this.getData()
+      this.router.navigate(['user/muestras/'+this.pid]);
     })
     .catch((err) => {
       alert(err.message)
     })
+
   }
 
 }

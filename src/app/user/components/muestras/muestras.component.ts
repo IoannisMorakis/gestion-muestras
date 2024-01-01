@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, signOut } from '@angular/fire/auth';
 import { Firestore, collection, deleteDoc, doc, getDocs, updateDoc, query, where } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MuestrasComponent {
   public data: any = [];
   public item: any;
+  public pid: any;
+  public up: any;
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
     //this.getData();
@@ -20,12 +22,15 @@ export class MuestrasComponent {
   ngOnInit(): void {
     this.route.params.subscribe(param =>{
       this.item=param['id'];
+      //this.pid=param['id'];
+      this.up=param['up'];
+
       console.log(param);
       console.log(param['id']);
       //this.generateBarcode(param);
 
     })
-    this.getData();
+    //this.getData();
     this.MyQuery();
 
   }
@@ -66,14 +71,30 @@ export class MuestrasComponent {
     })
   }
 
-  Salir(){
+  Scan(){
+
+    this.router.navigate(['user/scan']);
+    //window.location.href='#/auth/login';
+  }
+
+  Home(){
 
     this.router.navigate(['user/projects']);
     //window.location.href='#/auth/login';
   }
 
-  newMuestra(){
-    this.router.navigate(['user/muestras-new']);
+  logOut(){
+    signOut(this.auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+    this.router.navigate(['auth/select']);
+    //window.location.href='#/auth/login';
+  }
+
+  newMuestra(id: string){
+    this.router.navigate(['user/muestras-new/'+ id]);
     //window.location.href='#/auth/login';
   }
 
@@ -82,13 +103,30 @@ export class MuestrasComponent {
     //window.location.href='#/auth/login';
   }
 
+  infoUnidad(id: any){
+    this.router.navigate(['user/unidad-produccion-info/'+ id]);
+    //window.location.href='#/auth/login';
+  }
+
+  infoMuestra(id: any){
+    this.router.navigate(['user/muestras-info/'+ id]);
+    //window.location.href='#/auth/login';
+  }
+
+  Barcode(id: any){
+    this.router.navigate(['user/barcode/']);
+    //window.location.href='#/auth/login';
+  }
+
 
 
   async MyQuery(){
     //let str="Project 10";
     let str=this.item;
+    this.pid=str;
+    let unidad=this.up;
     console.log(str);
-    const q = query(collection(this.firestore, "muestras"), where("project", "==",str));
+    const q = query(collection(this.firestore, "muestras"), where("project", "==",str), where("unidad", "==", unidad));
 
 
     getDocs(q)
@@ -96,7 +134,15 @@ export class MuestrasComponent {
         this.data = [...response.docs.map((item) => {
           return { ...item.data(), id: item.id }
         })]
-      });
+        //console.log(this.data.length);
+        /*if(this.data.length==0){
+          //alert(err.message);
+          console.log("empty");
+
+        };*/
+      })
+
+
 
 
 
@@ -108,16 +154,17 @@ export class MuestrasComponent {
     });*/
 
 
-
     const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-      console.log("here2");
-      //this.list= doc;
-      //this.data=doc;
-    });
-    console.log("done");
+
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        //console.log("here2");
+        //this.list= doc;
+        //this.data=doc;
+      });
+      //console.log("done");
+
 
   }
 

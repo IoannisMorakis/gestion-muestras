@@ -1,4 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { Firestore, collection, getDocs, query, where } from '@angular/fire/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   ScannerQRCodeConfig,
   ScannerQRCodeResult,
@@ -13,6 +16,8 @@ import {
   styleUrls: ['./scan.component.css']
 })
 export class ScanComponent implements AfterViewInit {
+  public data: any = [];
+  public item: any;
 
   // https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia#front_and_back_camera
   public config: ScannerQRCodeConfig = {
@@ -40,7 +45,9 @@ export class ScanComponent implements AfterViewInit {
 
   @ViewChild('action') action!: NgxScannerQrcodeComponent;
 
-  constructor(private qrcode: NgxScannerQrcodeService) { }
+  constructor(private qrcode: NgxScannerQrcodeService, private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore) {
+    this.getData();
+   }
 
   ngAfterViewInit(): void {
     this.action.isReady.subscribe((res: any) => {
@@ -51,8 +58,10 @@ export class ScanComponent implements AfterViewInit {
 
   public onEvent(e: ScannerQRCodeResult[], action?: any): void {
     // e && action && action.pause();
-    console.log(e);
+    //console.log(e);
     console.log(e[0].value);
+    this.item=e[0].value;
+    this.MyQuery();
   }
 
   public handle(action: any, fn: string): void {
@@ -85,6 +94,46 @@ export class ScanComponent implements AfterViewInit {
       this.qrCodeResult2 = res;
     });
   }
+
+  getData() {
+    //console.log(this.auth.currentUser)
+    const dbInstance = collection(this.firestore, 'muestras');
+    getDocs(dbInstance)
+      .then((response) => {
+        this.data = [...response.docs.map((item) => {
+          return { ...item.data(), id: item.id }
+        })]
+      })
+  }
+
+  async MyQuery(){
+    //let str="Project 10";
+    let str=this.item;
+    console.log(str);
+    const q = query(collection(this.firestore, "muestras"), where("codigo", "==",str));
+
+
+    getDocs(q)
+      .then((response) => {
+        this.data = [...response.docs.map((item) => {
+          return { ...item.data(), id: item.id }
+        })]
+        //console.log(this.data.length);
+        if(this.data.length!=0){
+          //alert(err.message);
+          this.handle(this.action, 'stop');
+          this.router.navigate(['user/muestras-info/'+ str]);
+          //console.log("not empty");
+
+        };
+      })
+
+
+
+
+  }
+
+
 }
 
 

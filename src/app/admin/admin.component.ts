@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, signOut } from '@angular/fire/auth';
 import { Firestore, collection, deleteDoc, doc, getDocs, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -59,6 +59,36 @@ export class AdminComponent implements OnInit {
     .catch((err) => {
       alert(err.message)
     })
+  }
+
+  handleSignOut(){
+    //const auth = getAuth();
+
+    signOut(this.auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      console.log("here");
+      // An error happened.
+    });
+    this.router.navigate(['auth/select']);
+
+  }
+
+  Home(){
+
+    this.router.navigate(['admin']);
+    //window.location.href='#/auth/login';
+  }
+
+  Projectos(){
+
+    this.router.navigate(['admin']);
+    //window.location.href='#/auth/login';
+  }
+  Muestras(){
+
+    this.router.navigate(['admin']);
+    //window.location.href='#/auth/login';
   }
 
 }

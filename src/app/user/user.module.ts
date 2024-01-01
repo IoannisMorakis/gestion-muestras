@@ -15,8 +15,21 @@ import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
 import { SafePipe } from './safe.pipe';
 import { MuestrasEditComponent } from './components/muestras-edit/muestras-edit.component';
 import { ProjectEditComponent } from './components/project-edit/project-edit.component';
+import { MuestrasInfoComponent } from './components/muestras-info/muestras-info.component';
+import { MuestrasAllComponent } from './components/muestras-all/muestras-all.component';
+import { ProjectInfoComponent } from './components/project-info/project-info.component';
+import { UnidadProduccionNewComponent } from './components/unidad-produccion-new/unidad-produccion-new.component';
+import { UnidadProduccionEditComponent } from './components/unidad-produccion-edit/unidad-produccion-edit.component';
+import { UnidadProduccionInfoComponent } from './components/unidad-produccion-info/unidad-produccion-info.component';
+import { UnidadProduccionComponent } from './components/unidad-produccion/unidad-produccion.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { ClientsNewComponent } from './components/clients-new/clients-new.component';
+import { ClientsEditComponent } from './components/clients-edit/clients-edit.component';
+import { ClientsInfoComponent } from './components/clients-info/clients-info.component';
+import { UnidadProduccionAllComponent } from './components/unidad-produccion-all/unidad-produccion-all.component';
 
 LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res))
+
 
 
 
@@ -31,7 +44,19 @@ LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res))
     BarcodeComponent,
     SafePipe,
     MuestrasEditComponent,
-    ProjectEditComponent
+    ProjectEditComponent,
+    MuestrasInfoComponent,
+    MuestrasAllComponent,
+    ProjectInfoComponent,
+    UnidadProduccionComponent,
+    UnidadProduccionNewComponent,
+    UnidadProduccionEditComponent,
+    UnidadProduccionInfoComponent,
+    ClientsComponent,
+    ClientsNewComponent,
+    ClientsEditComponent,
+    ClientsInfoComponent,
+    UnidadProduccionAllComponent
   ],
   imports: [
     CommonModule,

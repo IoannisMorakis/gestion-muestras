@@ -82,4 +82,87 @@ button{
 	background-size:cover;
 }
 
+.navbar2Box{
+  width: 100%;
+  height: 47px;
+  background: #3EC28F;
+  border-top: 4px solid white;
+  position:absolute;
+  left:0%;
+  top:10%;
+}
 
+.navbar2Text{
+  /*background: #3EC28F;*/
+  height: 47px;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-family: Verdana;
+  font-weight: 600;
+  word-wrap: break-word;
+  text-align: center;
+  display: inline-block;
+  	vertical-align: middle;
+  	line-height: 240%;
+  border-top: 4px solid white;
+
+}
+
+#UnidadText{
+  cursor: pointer;
+  width: 20%;
+  position:absolute;
+  left:40%;
+  top:10%;
+  border-right: 4px solid white;
+
+}
+
+
+
+#ProyectosText{
+  cursor: pointer;
+  width: 20%;
+  position:absolute;
+  left:20%;
+  top:10%;
+  border-right: 4px solid white;
+}
+
+#MuestrasText{
+  cursor: pointer;
+  width: 20%;
+  position:absolute;
+  left:60%;
+  top:10%;
+  border-right: 4px solid white;
+}
+
+#ClientesText{
+  cursor: pointer;
+  width: 20%;
+  position:absolute;
+  left:80%;
+  top:10%;
+
+}
+
+#cerrarText{
+  cursor: pointer;
+  width: 20%;
+  position:absolute;
+  left:0%;
+  top:10%;
+  border-right: 4px solid white;
+}
+
+.salir{
+  cursor: pointer;
+  border: none;
+  background: none;
+  position:absolute;
+  width:20%;
+	height:10%;
+  left: 0%;
+  top: 0%
+}

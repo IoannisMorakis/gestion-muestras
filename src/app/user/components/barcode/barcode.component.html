@@ -2,7 +2,7 @@
 
 
 <br>
-
+<!-- -->
 <form #loginForm="ngForm" (ngSubmit)="generateBarcode(loginForm.value)">
   <div class="main">
     <div class="input-fields">
@@ -11,10 +11,10 @@
 
     <br>
 
-    <button id="btn_generate">Generate Barcode</button>
+    <button id="btn_generate" class="barcode">Generate Barcode</button>
   </div>
 </form>
 
 <br><br>
 <svg onclick="window.print(this)" id="barcode"></svg>
-<button (click)="toPrint()">Print</button>
+<button class="print" (click)="toPrint()">Print</button>

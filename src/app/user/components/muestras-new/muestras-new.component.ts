@@ -11,7 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MuestrasNewComponent {
   title = 'gestion-de-muestras-de-campo';
   public data: any = []
-  public res: any;
+  public pid: any;
+  public res: any="";
   public static text: string = "";
 
   @ViewChild('geo') geo: any;//ElementRef | undefined;
@@ -22,6 +23,20 @@ export class MuestrasNewComponent {
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore){
     //this.getData();
   }
+  ngOnInit(): void {
+    this.route.params.subscribe(param =>{
+      this.pid=param['id'];
+      //this.pid=param['id'];
+
+      //console.log(param);
+      //console.log(param['id']);
+      //this.generateBarcode(param);
+
+    })
+    //this.getData();
+    //this.MyQuery();
+
+  }
 
   handleRegister(value: any){
      this.addData(value);
@@ -29,8 +44,26 @@ export class MuestrasNewComponent {
 
   addData(value: any) {
     //const dbInstance = collection(this.firestore, 'users');
-    const dbInstance = doc(this.firestore, 'muestras', value.codigo);
-    setDoc(dbInstance, value)
+    const dbInstance = doc(this.firestore, 'clientes', value.codigo);
+    //if (typeof value.cliente === 'undefined') value.cliente ="";
+
+    //setDoc(dbInstance, value)
+    setDoc(dbInstance,
+      {
+        codigo: value.codigo,
+        cliente: value.cliente,
+        fecha: value.fecha,
+        cultivo: value.cultivo,
+        tipo: value.tipo,
+        fitopatogeno: value.fitopatogeno,
+        estado: value.estado,
+        coordenadas: value.coordenadas,
+        sintomas: value.sintomas,
+        comentarios: value.comentarios,
+        project: this.pid
+      }
+
+      )
       .then(() => {
 
         alert('Data Sent')
@@ -43,7 +76,7 @@ export class MuestrasNewComponent {
   }
 
   getData() {
-    const dbInstance = collection(this.firestore, 'muestras');
+    const dbInstance = collection(this.firestore, 'clientes');
     getDocs(dbInstance)
       .then((response) => {
         this.data = [...response.docs.map((item) => {

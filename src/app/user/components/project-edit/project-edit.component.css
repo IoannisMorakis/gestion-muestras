@@ -2,11 +2,11 @@
   box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color:rgba(217.0000022649765, 217.0000022649765, 217.0000022649765, 1);
   width: 75%;
-  height: 70%;
+  height: 35%;
   flex-shrink: 0;
   position:absolute;
   left:15%;
-  top:25%;
+  top:30%;
 
 }
 
@@ -18,7 +18,7 @@
   position:absolute;
   width: 90%;
   left: 5%;
-  top: 3%;
+  top: 5%;
 }
 
 
@@ -71,7 +71,7 @@ button{
 	font-size:48px;
 	letter-spacing:0;
   left:35%;
-	top:15%;
+	top:20%;
 
 }
 
@@ -195,8 +195,8 @@ img{
   border-bottom-left-radius:30px;
   border-bottom-right-radius:30px;
   font-size:16px;
-  left:90%;
-  top: 100%;
+  left:85%;
+  top: 110%;
 }
 
 .botonrojo { /*boton*/
@@ -212,7 +212,7 @@ img{
   border-bottom-right-radius:30px;
   font-size:16px;
   left:0%;
-  top: 100%;
+  top: 110%;
 }
 
 .botonText { /*registrar text*/

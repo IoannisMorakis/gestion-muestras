@@ -14,7 +14,8 @@ export class ProjectEditComponent {
   public data: any = []
   public res: any;
   public item: any;
-  public static text: string = "";
+  public text: any;
+  public pid: any;
 
   @ViewChild('geo') geo: any;//ElementRef | undefined;
   public htmlToAdd: any;
@@ -22,18 +23,51 @@ export class ProjectEditComponent {
   @Output() somethingChange= new EventEmitter<any>();
 
   constructor(private router: Router, private route: ActivatedRoute, public auth: Auth, public firestore: Firestore){
+    //this.getData();
+    //this.MyQuery();
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(param =>{
+      this.text=param['id'];
+      console.log(param);
+      console.log(param['id']);
+      //this.generateBarcode(param);
+
+    })
     this.getData();
     this.MyQuery();
+
   }
 
   handleRegister(value: any){
      this.addData(value);
   }
 
+  randomCode(){
+    let code = '';
+    const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const codeLength = 20;
+
+    for (let i = 0; i < codeLength; i++) {
+      code += alpha.charAt(Math.floor(Math.random() * alpha.length));
+    }
+
+    return code;
+  };
+
   addData(value: any) {
     //const dbInstance = collection(this.firestore, 'users');
-    const dbInstance = doc(this.firestore, 'muestras', value.codigo);
-    setDoc(dbInstance, value)
+    let integrantesArr= value.integrantes.split(/[\s,]+/);
+    const dbInstance = doc(this.firestore, 'projects', this.pid);
+    setDoc(dbInstance,
+      {
+        name: value.name,
+        cliente: value.cliente,
+        owner: value.owner,
+        integrantes: integrantesArr
+      }
+      )
       .then(() => {
 
         alert('Data Sent')
@@ -43,10 +77,14 @@ export class ProjectEditComponent {
       })
       console.log(value.comentarios)
 
+
+
+
+
   }
 
   getData() {
-    const dbInstance = collection(this.firestore, 'muestras');
+    const dbInstance = collection(this.firestore, 'projects');
     getDocs(dbInstance)
       .then((response) => {
         this.data = [...response.docs.map((item) => {
@@ -114,12 +152,14 @@ export class ProjectEditComponent {
 
 
   async MyQuery(){
-    const q = query(collection(this.firestore, "muestras"), where("codigo", "==","EJ-01"));
+    let str=this.text;
+    const q = query(collection(this.firestore, "projects"), where("name", "==",str));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       this.item=doc.data();
+      this.pid=doc.id;
       console.log(doc.id, " => ", doc.data());
     });
 
@@ -132,7 +172,7 @@ export class ProjectEditComponent {
   */
 
   deleteData(id: string) {
-    const dataToDelete = doc(this.firestore, 'users', id);
+    const dataToDelete = doc(this.firestore, 'projects', id);
     deleteDoc(dataToDelete)
     .then(() => {
       alert('Data Deleted');
@@ -142,4 +182,5 @@ export class ProjectEditComponent {
       alert(err.message)
     })
   }
+
 }
