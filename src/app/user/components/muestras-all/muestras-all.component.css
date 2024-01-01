@@ -64,6 +64,7 @@ table {
 
 
 .scanbutton{
+  cursor: pointer;
   width: 153px;
   height: 36px;
   left: 49%;
@@ -74,6 +75,7 @@ table {
 }
 
 .scantext{
+  cursor: pointer;
   width: 126px;
   height: 16px;
   left: 50%;

@@ -30,7 +30,7 @@ export class BarcodeComponent {
 
       console.log(param);
       console.log(param['id']);
-      //this.generateBarcode(code);
+      this.generateBarcode(code);
 
     })
     //this.getData();
@@ -39,7 +39,10 @@ export class BarcodeComponent {
   }
 
   generateBarcode(value: any){
-    var text = value.txt_input;
+    //var text = value.txt_input;
+    var text = value;
+    console.log(value);
+    console.log(text);
     this.res=text;
 
         JsBarcode("#barcode", text, {

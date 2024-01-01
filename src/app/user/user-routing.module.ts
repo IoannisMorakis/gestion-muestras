@@ -28,7 +28,7 @@ const routes: Routes = [
     {path: 'project-new', component: ProjectNewComponent},
     {path: 'project-edit/:id', component: ProjectEditComponent},
     {path: 'project-info/:id', component: ProjectInfoComponent},
-    {path: 'barcode', component:BarcodeComponent},
+    {path: 'barcode/:id', component:BarcodeComponent},
     {path: 'muestras/:id/:up', component:MuestrasComponent},
     {path: 'muestras-new/:id', component:MuestrasNewComponent},
     {path: 'muestras-edit/:id', component:MuestrasEditComponent},

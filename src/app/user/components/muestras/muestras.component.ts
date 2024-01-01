@@ -114,7 +114,7 @@ export class MuestrasComponent {
   }
 
   Barcode(id: any){
-    this.router.navigate(['user/barcode/']);
+    this.router.navigate(['user/barcode/'+ id]);
     //window.location.href='#/auth/login';
   }
 

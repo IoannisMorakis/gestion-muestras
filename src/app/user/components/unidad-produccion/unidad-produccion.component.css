@@ -22,7 +22,7 @@ table {
 }
 
 .projectBlock{
-  width: auto;
+  width: 60%;
   height: 35px;
   background: #3EC28F;
   color: white;

@@ -115,7 +115,7 @@ button{
   .homeLogo { /*Home text*/
     position:relative;
 
-    top:25%;
+    top:30%;
     left:25%;
 
     width:36px;
@@ -167,18 +167,6 @@ button{
     background-repeat:no-repeat;
     background-size:cover;
   }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

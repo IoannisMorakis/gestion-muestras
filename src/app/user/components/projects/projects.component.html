@@ -3,7 +3,7 @@
 
 
 
-<div class="scanbutton" ></div>
+<div class="scanbutton"></div>
 <div class="scantext" (click)="Scan()">SCAN</div>
 
 
@@ -15,7 +15,7 @@
     <tr>
       <th> Nombre </th>
       <th> Dueño </th>
-      <th> Integrantes</th>
+      <th class="integrantes" > Integrantes</th>
       <th> Clientes </th>
       <th> </th>
 
@@ -25,7 +25,7 @@
 
       <td>{{ item.name  }}</td>
       <td >{{ item.owner }}</td>
-      <td>{{ item.integrantes}}</td>
+      <td class="integrantes">{{ item.integrantes}}</td>
       <td>{{ item.cliente }}</td>
 
       <td>

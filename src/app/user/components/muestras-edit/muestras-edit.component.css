@@ -2,11 +2,11 @@
   box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color:rgba(217.0000022649765, 217.0000022649765, 217.0000022649765, 1);
   width: 75%;
-  height: 70%;
+  height: 69%;
   flex-shrink: 0;
   position:absolute;
   left:15%;
-  top:25%;
+  top:24%;
 
 }
 
@@ -18,7 +18,7 @@
   position:absolute;
   width: 90%;
   left: 5%;
-  top: 3%;
+  top: 0%;
 }
 
 
@@ -70,8 +70,8 @@ button{
 	font-family:Verdana;
 	font-size:48px;
 	letter-spacing:0;
-  left:35%;
-	top:17%;
+  left:39%;
+	top:16%;
 
 }
 
@@ -184,6 +184,7 @@ img{
 
 
 .boton { /*boton*/
+  margin: 2%;
   background-color:rgba(62.00000010430813, 179.000004529953, 194.00000363588333, 1);
   color:rgba(255, 255, 255, 1);
   /*width:10%;
@@ -200,6 +201,7 @@ img{
 }
 
 .botonrojo { /*boton*/
+  margin: 2%;
   background-color:rgb(194, 62, 62);
   color:rgba(255, 255, 255, 1);
   /*width:10%;
