@@ -77,9 +77,11 @@ table {
 .scantext{
   cursor: pointer;
   width: 126px;
+  margin-top: 10px;
+  margin-left: 15px;
   height: 16px;
-  left: 50%;
-  top: 31%;
+  /*left: 50%;
+  top: 31%;*/
   position: absolute;
   text-align: center;
   color: white;
@@ -170,9 +172,23 @@ table {
 
 @media only screen and (max-width: 768px) {
 
+  .projectBlock{
+    width: 60%;
+    height: 25px;
+    background: #3EC28F;
+    color: white;
+    padding-top: 10px;
+    font-family:Verdana;
+    text-align: center;
+    font-size:14px;
+    font-weight: bold;
+    letter-spacing:0;
+    cursor: pointer;
+  }
+
   .list{
     position: absolute;
-    left: 1%;
+    left: 5%;
     top:40%;
     text-overflow: ellipsis;
   }
@@ -244,10 +260,13 @@ table {
   }
 
   .scantext{
-    width: 30%;
-    height: 3%;
-    left: 35%;
-    top: 31%;
+    cursor: pointer;
+    width: 126px;
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 16px;
+    /*left: 50%;
+    top: 31%;*/
     position: absolute;
     text-align: center;
     color: white;
@@ -256,7 +275,6 @@ table {
     font-weight: 700;
     word-wrap: break-word;
   }
-
 
 
   .boton {
@@ -327,6 +345,18 @@ table {
     background-repeat: no-repeat;
     cursor: pointer;
     background-image:url(../../../../assets/info.png);
+  }
+
+
+  .imprimir{
+    border: none;
+    background-color: #D9D9D9;
+    width:14px;
+    height: 14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image:url(../../../../assets/Imprimir.png);
   }
 
 

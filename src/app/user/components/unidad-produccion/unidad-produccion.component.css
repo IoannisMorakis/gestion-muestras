@@ -74,10 +74,13 @@ table {
 }
 
 .scantext{
+  cursor: pointer;
   width: 126px;
+  margin-top: 10px;
+  margin-left: 15px;
   height: 16px;
-  left: 50%;
-  top: 31%;
+  /*left: 50%;
+  top: 31%;*/
   position: absolute;
   text-align: center;
   color: white;
@@ -86,6 +89,7 @@ table {
   font-weight: 700;
   word-wrap: break-word;
 }
+
 
 
 .boton {
@@ -180,6 +184,20 @@ table {
 
 @media only screen and (max-width: 768px) {
 
+  .projectBlock{
+    width: 40%;
+    height: 25px;
+    background: #3EC28F;
+    color: white;
+    padding-top: 10px;
+    font-family:Verdana;
+    text-align: center;
+    font-size:14px;
+    font-weight: bold;
+    letter-spacing:0;
+    cursor: pointer;
+  }
+
   .list{
     position: absolute;
     left: 1%;
@@ -254,10 +272,13 @@ table {
   }
 
   .scantext{
-    width: 30%;
-    height: 3%;
-    left: 35%;
-    top: 31%;
+    cursor: pointer;
+    width: 126px;
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 16px;
+    /*left: 50%;
+    top: 31%;*/
     position: absolute;
     text-align: center;
     color: white;

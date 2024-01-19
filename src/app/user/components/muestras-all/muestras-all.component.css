@@ -77,9 +77,11 @@ table {
 .scantext{
   cursor: pointer;
   width: 126px;
+  margin-top: 10px;
+  margin-left: 15px;
   height: 16px;
-  left: 50%;
-  top: 31%;
+  /*left: 50%;
+  top: 31%;*/
   position: absolute;
   text-align: center;
   color: white;
@@ -173,7 +175,7 @@ table {
 
   .list{
     position: absolute;
-    left: 1%;
+    left: 5%;
     top:40%;
     text-overflow: ellipsis;
   }
@@ -245,10 +247,13 @@ table {
   }
 
   .scantext{
-    width: 30%;
-    height: 3%;
-    left: 35%;
-    top: 31%;
+    cursor: pointer;
+    width: 126px;
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 16px;
+    /*left: 50%;
+    top: 31%;*/
     position: absolute;
     text-align: center;
     color: white;
@@ -257,7 +262,6 @@ table {
     font-weight: 700;
     word-wrap: break-word;
   }
-
 
 
   .boton {
@@ -317,6 +321,16 @@ table {
     background-image:url(../../../../assets/clipboard.png);
   }
 
+  .imprimir{
+    border: none;
+    background-color: #D9D9D9;
+    width:14px;
+    height: 14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image:url(../../../../assets/Imprimir.png);
+  }
 
 
   .detalles{
