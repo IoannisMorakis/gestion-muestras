@@ -1,11 +1,11 @@
 {
-  "name": "gestion-muestras",
-  "short_name": "gestion-muestras",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Gestion de Muestras",
+  "short_name": "Gestion Muestrass",
+  "theme_color":"#FFFFFF",
+  "background_color":"#FFFFFF",
   "display": "standalone",
-  "scope": "./",
   "orientation": "portrait",
+  "scope": "./",
   "start_url": "./",
   "icons": [
     {
