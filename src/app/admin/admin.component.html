@@ -36,17 +36,18 @@
 <div class="list">
   <table>
     <tr>
-      <th> Nombre </th>
+
+      <!--<th> Nombre </th>-->
       <th> Email </th>
-      <th> Password </th>
+      <!--<th> Password </th>-->
       <th> Role </th>
       <th> </th>
     </tr>
     <tr *ngFor="let item of data" >
 
-      <td contenteditable="true">{{ item.Nombre }}</td>
+      <!--<td contenteditable="true">{{ item.Nombre }}</td>-->
       <td contenteditable="true">{{ item.email }}</td>
-      <td contenteditable="true">{{ item.password }}</td>
+      <!--<td contenteditable="true">{{ item.password }}</td>-->
       <td contenteditable="true">{{ item.role}}</td>
       <td>
         <button (click)="updateData(item.id)">
