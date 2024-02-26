@@ -250,10 +250,9 @@ table {
 
 
   .scanbutton{
-    cursor: pointer;
-    width: 153px;
+    width: 30%;
     height: 36px;
-    left: 30%;
+    left: 35%;
     top: 30%;
     position: absolute;
     background: #4C9EFF;
